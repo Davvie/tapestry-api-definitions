@@ -8,13 +8,15 @@
  * @param method The HTTP method (default is "GET").
  * @param parameters For "POST" or "PUT" requests (e.g. "foo=1&bar=something").
  * @param extraHeaders An object with additional header key/value pairs.
+ * @param fullResponse Boolean which causes response to include status code, headers, and body text.
  * @returns A Promise resolving with a string (response body) or, for "HEAD" requests, a JSON dictionary of headers.
  */
 declare function sendRequest(
   url: string, 
   method?: string, 
   parameters?: string, 
-  extraHeaders?: { [key: string]: string }
+  extraHeaders?: { [key: string]: string },
+  fullResponse?: boolean
 ): Promise<string>;
 
 /**
@@ -269,4 +271,7 @@ declare class Item {
   
   /** Dictionary mapping shortcode names to image URLs */
   shortcodes?: { [key: string]: string };
+  
+  /** Array of annotations for the item */
+  annotations?: Annotation[];
 }
